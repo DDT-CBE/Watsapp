@@ -1,0 +1,144 @@
+.enquiry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0FA4AF; /* Light purple background */
+  padding: 20px; /* Added padding for smaller screens */
+}
+
+.enquiry-form {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 100px;
+  max-width: 800px;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Left section (image container) */
+.enquiry-left {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enquiry-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Right section (form) */
+.enquiry-right {
+  flex: 1;
+}
+
+.enquiry-right h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-control:focus {
+  border-color: #7c4dff; /* Purple border on focus */
+  outline: none;
+}
+
+textarea.form-control {
+  height: 150px;
+}
+
+.submit-btn {
+  display: inline-block;
+  width: 100%;
+  background-color: #219ebc;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #023047;
+}
+
+/* Media queries for responsiveness */
+
+/* Tablets and smaller desktops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .enquiry-form {
+    padding: 30px 60px; /* Reduce padding for medium screens */
+    gap: 15px;
+  }
+
+  .enquiry-right h2 {
+    font-size: 1.4rem; /* Reduce heading size */
+  }
+
+  .form-control {
+    padding: 12px; /* Reduce padding for form controls */
+  }
+}
+
+/* Small tablets and large phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .enquiry-form {
+    flex-direction: column; /* Stack the form and image vertically */
+    padding: 20px 40px;
+    gap: 20px;
+  }
+
+  .enquiry-left, .enquiry-right {
+    flex-basis: 100%;
+    text-align: center; /* Center-align the form and image */
+  }
+
+  .enquiry-right h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+    padding: 10px; /* Smaller padding for inputs */
+  }
+}
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .enquiry-form {
+    padding: 15px 20px; /* Even smaller padding for mobile */
+  }
+
+  .enquiry-right h2 {
+    font-size: 1.2rem; /* Further reduce heading size */
+  }
+
+  .submit-btn {
+    padding: 12px; /* Smaller submit button padding */
+    font-size: 0.9rem; /* Adjust button font size */
+  }
+
+  .form-control {
+    padding: 8px; /* Reduced padding for small screens */
+  }
+}

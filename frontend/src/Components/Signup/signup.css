@@ -1,0 +1,116 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+  }
+  
+  /* Main Container */
+  .signup-container {
+    background: linear-gradient(to right, #ff9500, #ffd000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    flex-wrap: wrap;
+  }
+  
+  /* Heading */
+  .signup-heading {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin:20px 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  
+  /* Form Container */
+  .signup-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Input Group Styling */
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .txt{
+    cursor: pointer;
+  }
+  .input-group input ,select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+
+  
+  .input-group input:focus {
+    border-color: #2575fc;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    width: 100%;
+    background: #ff7b00;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background: #ffc300;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .signup-box {
+      padding: 30px;
+    }
+  
+    .signup-heading {
+      font-size: 2rem;
+    }
+  
+    .submit-button {
+      font-size: 1rem;
+      padding: 12px;
+      
+    }
+  }
+  
+
+  .txt{
+    font-size: .8rem;
+    padding: 10px;
+    color:grey;
+  }
+
+  
