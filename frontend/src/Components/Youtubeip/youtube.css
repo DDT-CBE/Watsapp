@@ -1,0 +1,104 @@
+/* Container for the YouTube Cards */
+.youtube-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+  }
+  
+  /* Individual Card Styling */
+  .youtube-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .youtube-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card Content: Text + Table */
+  .details-tables {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .details-tables th,
+  .details-tables td {
+    text-align: left;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .details-tables th {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .details-tables td {
+    color: #666;
+  }
+  
+  .details-tables a {
+    color: #0073e6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .details-tables a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Thumbnail/Image (if needed) */
+  .thumbnail {
+    width: 100px;
+    height: 80px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 20px;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .5rem;
+    background-color: black;
+    color: white;
+
+  }
+
+
+  .yticon{
+    width: 30px;
+  }
+
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .youtube-card {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+      margin-bottom: 15px;
+    }
+  
+    .details-tables th,
+    .details-tables td {
+      font-size: 0.85rem;
+    }
+  }
+  

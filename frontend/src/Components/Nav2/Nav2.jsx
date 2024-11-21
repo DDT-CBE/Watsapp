@@ -12,7 +12,7 @@ const Nav2 = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   const location = useLocation();
-  
+
   const menutoggle = () => {
     setMenu((prevMenu) => !prevMenu);
   };
@@ -84,7 +84,7 @@ const Nav2 = () => {
             <li>
               <Link
                 to={"/"}
-                style={{ color: "#03045e", textDecoration: "none" }}
+                style={{ color: "white", textDecoration: "none" }}
                 onClick={handleLinkClick}
               >
                 Home
@@ -95,7 +95,7 @@ const Nav2 = () => {
               <li>
                 <Link
                   to={"/form/buyer"}
-                  style={{ color: "#03045e", textDecoration: "none" }}
+                  style={{ color: "white", textDecoration: "none" }}
                   onClick={handleLinkClick}
                 >
                   Register
@@ -108,13 +108,15 @@ const Nav2 = () => {
               <li>
                 <Link
                   to={"/form/watsapp"}
-                  style={{ color: "#03045e", textDecoration: "none" }}
+                  style={{ color: "white", textDecoration: "none" }}
                   onClick={handleLinkClick}
                 >
                   Register for Watsapp Group
                 </Link>
               </li>
             )}
+
+           
           </ul>
         )}
 

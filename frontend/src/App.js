@@ -57,8 +57,8 @@ const App = () => {
           <Route path='/influencer' element={<Influencer />}></Route>
           <Route path='/youtubeip' element={<Youtubeip />}></Route>
           <Route path='/watsapp' element={ <Influencer/> }></Route>
-          <Route path='/watsappgroup' element={ <IndustryCategories/> }></Route>
-          <Route path='/profile' element={ <Watsapp/> }></Route>
+          <Route path='/watsappgroup' element={ <Watsapp/> }></Route>
+         
           <Route path='/form/watsapp' element={ <Sellerform/> }></Route>
           <Route path='/instagramip' element={<Instagramip/>}></Route>
           <Route path='/watsappip' element={ <Franchisepage/> }></Route>

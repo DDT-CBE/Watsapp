@@ -4,13 +4,12 @@ const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const authRoutes = require("./Routes/loginSignuproutes")
-const hierarchyRoutes = require("./Routes/hierarchy")
+const creditRoutes = require("./Routes/creditsRouts")
 const SignupModel = require("./Model/signup");
 const RegisterModel = require("./Model/RegisterModel");
 const InstagramModel = require("./Model/InstagramModel")
 const path = require("path");
 const verifyToken = require("./middelware");
-
 const UserInfoModel = require("./Model/UserinfoModel");
 const WatsappGroupModel = require("./Model/WatsappGroupModel");
 
@@ -25,7 +24,7 @@ mongoose
 
 
   app.use("/auth",authRoutes ); // Auth routes
-  app.use("/auth",hierarchyRoutes ); // Auth routes
+  app.use("/auth",creditRoutes)
 
 
 // get route for signup
@@ -159,7 +158,6 @@ app.get("/getwatsappgroup", async (req, res) => {
     }
     const getUser = await WatsappGroupModel.find(query);
     res.json(getUser); // Send the retrieved users as JSON response
-    console.log(getUser)
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: "Internal server error" }); // Optional: handle error and send a response

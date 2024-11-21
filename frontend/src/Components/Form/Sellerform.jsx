@@ -17,7 +17,7 @@ const Sellerform = () => {
   const [district, setDistrict] = useState("");
   const [industry, setIndustry] = useState("");
   const [category, setCategory] = useState("");
-  const [approve] =useState(false);
+  const [approve] = useState(false);
   const [loading, setLoading] = useState(false); // Track loading state
   const [submit, setSubmit] = useState(false);
   const [err, setErr] = useState("");
@@ -34,7 +34,7 @@ const Sellerform = () => {
     district,
     industry,
     category,
-    approve
+    approve,
   };
 
   const submithandler = (e) => {
@@ -83,7 +83,6 @@ const Sellerform = () => {
           value={groupDescription}
           onChange={(e) => setGroupDescription(e.target.value)}
         ></textarea>
-       
         <label className="sellerform-label">Joining Status</label>
         <select
           className="sellerform-input"
@@ -107,8 +106,11 @@ const Sellerform = () => {
           onChange={(e) => setIndustry(e.target.value)}
         >
           <option>Select Industry</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Finance">Finance</option>
+          <option value="Retail & E-Commerce">Retail & E-Commerce</option>
           <option value="Education">Education</option>
-          <option value="Electronics">Electronics</option>
+          <option value="Technology">Technology</option>
         </select>
         <label className="sellerform-label">Category</label>
         <select
@@ -117,17 +119,61 @@ const Sellerform = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option>Select Category</option>
-          {industry === "Education" && (
+          {industry === "Healthcare" && (
             <>
-              <option value="School">School</option>
-              <option value="College">College</option>
+              <option value="Pharmaceuticals">Pharmaceuticals</option>
+              <option value="Medical Devices">Medical Devices</option>
+              <option value="Telemedicine">Telemedicine</option>
+              <option value="Biotechnology">Biotechnology</option>
+              <option value="Mental Health">Mental Health</option>
             </>
           )}
 
-          {industry === "Electronics" && (
+          {industry === "Finance" && (
             <>
-              <option value="Mobiles">Mobiles</option>
-              <option value="Laptops">Laptops</option>
+              <option value="Banking">Banking</option>
+              <option value="Financial Technology (FinTech)">
+                Financial Technology (FinTech)
+              </option>
+              <option value="Investment Management">
+                Investment Management
+              </option>
+              <option value="Cryptocurrency">Cryptocurrency</option>
+              <option value="Insurance">Insurance</option>
+            </>
+          )}
+
+          {industry === "Retail & E-Commerce" && (
+            <>
+              <option value="Fashion and Apparel">Fashion and Apparel</option>
+              <option value="Consumer Electronics">Consumer Electronics</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Home Goods">Home Goods</option>
+              <option value="Furniture">Furniture</option>
+            </>
+          )}
+
+          {industry === "Education" && (
+            <>
+              <option value="K-12 Education">K-12 Education</option>
+              <option value="Higher Education">Higher Education</option>
+              <option value="Online Learning Platforms">
+                Online Learning Platforms
+              </option>
+              <option value="Vocational Training">Vocational Training</option>
+              <option value="Language Learning">Language Learning</option>
+            </>
+          )}
+
+          {industry === "Technology" && (
+            <>
+              <option value="Software Development">Software Development</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Artificial Intelligence">
+                Artificial Intelligence
+              </option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Data Science">Data Science</option>
             </>
           )}
         </select>

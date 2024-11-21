@@ -1,0 +1,73 @@
+/* Container for all profile cards */
+.buyer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+  }
+  
+  /* Individual profile card styling */
+  .buyer-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .buyer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Table for profile details */
+  .details-tables {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .details-tables th,
+  .details-tables td {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+  
+  .details-tables th {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .details-tables td {
+    color: #555;
+  }
+  
+  .details-tables a {
+    color: #0073e6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .details-tables a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .buyer-card {
+      padding: 15px;
+    }
+  
+    .details-tables th,
+    .details-tables td {
+      font-size: 0.85rem;
+    }
+  }
+  

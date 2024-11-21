@@ -1,182 +1,164 @@
-/* General styles */
+
+
+/* Title */
 .buyer-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-top: 30px;
-  color: #34495e;
-  font-weight: bold;
-  padding: 60px 0 10px;
-  border-bottom: 2px solid #ddd;
+  color: #0078D4;
+  margin: 20px 0;
 }
 
+/* Step Containers */
+.statesAndDistricts, .industryTypes, .subCategories {
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #555;
+}
+
+select, button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button,.backbutton {
+  background-color: #0078D4;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+
+button:hover {
+  background-color: #005a9c;
+}
+
+/* Industry Container */
+.industryContainer, .subCategoryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.industry, .category {
+  background-color: #f1f1f1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.industry.active, .category.active {
+  background-color: #0078D4;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.industry:hover, .category:hover {
+  transform: scale(1.1);
+}
+
+/* Loader */
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #0078D4;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/* Buyer Container */
 .buyer-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 20px;
   padding: 20px;
 }
 
-/* Buyer card styles */
 .buyer-card {
-  background-color: #fafafa;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 500px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  width: 100%;
+  padding: 20px;
+  transition: transform 0.3s;
 }
 
 .buyer-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Details table styles */
-.details-table,
 .details-tables {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
 }
 
-.details-table th,
-.details-table td,
-.details-tables th,
-.details-tables td {
-  padding: 12px 8px;
+.details-tables th, .details-tables td {
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  color: #555;
-  width: 50%;
+  padding: 8px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 0.9rem;
 }
 
-.details-table th,
 .details-tables th {
-  font-weight: bold;
-  color: #34495e;
-}
-
-.details-table td {
-  background-color: #fafafa;
-}
-
-.details-tables tr:nth-child(1) {
-  background-color: #ffdd00;
-}
-
-/* More button styles */
-.more {
-  background: linear-gradient(to right, #ffa200, #ffdd00);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-.morehide {
-  display: none;
-}
-
-/* Search input styles */
-.search {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.search input {
-  width: 300px;
-  padding: 10px;
-  border-radius: 20px;
-  background-color: #ffea00be;
-  color: black;
-  border: none;
-}
-
-.search button {
-  padding: 10px 20px;
-  background-color: #ffa200;
-  border: none;
-  border-radius: 20px;
-}
-
-.search button:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-
-/* Loader styles */
-.loader {
-  height: 100vh;
-  width: 100%;
-  background-image: url(../Assets/loader.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #ffca03;
-}
-
-
-.industryTypes {
-  padding: 20px;
-}
-
-.industryContainer {
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line if they overflow */
-  gap: 10px; /* Adds space between industry items */
-}
-
-.industry {
-  cursor: pointer;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  width: fit-content;
-  flex: 1 0 auto; /* Allows items to take only as much space as needed */
-  border-radius: 20px;
-}
-
-.industry.active, .category.active {
-  background-color: #0073e6;
-  color: white;
+  color: #0078D4;
   font-weight: bold;
 }
-  
-.subCategories {
-  margin-top: 15px;
+
+.details-tables a {
+  color: #0078D4;
+  text-decoration: none;
 }
 
-.subCategoryContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Adds space between category items */
+.details-tables a:hover {
+  text-decoration: underline;
 }
 
-.category {
-  padding: 10px;
-  background-color: #e6e6e6;
-  border-radius: 5px;
-  flex: 1 0 auto;
-  width: fit-content;
-  border-radius: 20px;
-}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .industryContainer, .subCategoryContainer {
+      flex-direction: column;
+      gap: 10px;
+  }
 
-
-/* Media queries for responsive design */
-@media (max-width: 1200px), (max-width: 768px), (max-width: 488px) {
   .buyer-card {
-    width: 100%;
-    max-width: 100%;
+      max-width: 90%;
   }
 }
+
+
+
+
+
