@@ -18,7 +18,6 @@ const Watsapp = () => {
   const [step, setStep] = useState(1); // Track the current step
   const [authUser, setAuthUser] = useState(null);
 
-
   const navigate = useNavigate();
 
   const industries = {
@@ -59,8 +58,6 @@ const Watsapp = () => {
     ],
   };
 
-
-
   const getUserData = () => {
     const token = localStorage.getItem("token");
 
@@ -78,7 +75,7 @@ const Watsapp = () => {
       })
       .then((res) => {
         setAuthUser(res.data);
-      
+
         console.log("User data:", res.data);
       })
       .catch((err) => {
@@ -89,7 +86,6 @@ const Watsapp = () => {
         }
       });
   };
-
 
   const getBuyerData = () => {
     setLoading(true);
@@ -117,8 +113,6 @@ const Watsapp = () => {
       });
   };
 
-
-  
   const visibelHandeler = (id) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -128,8 +122,6 @@ const Watsapp = () => {
     }
 
     if (authUser.credits > 0) {
-     
-    
       axios
         .post(
           `${url}auth/addnumber`,
@@ -143,14 +135,13 @@ const Watsapp = () => {
         .then((res) => {
           console.log("Successfully added to visibelNumbers:", res.data);
           // Update local state after successful operation
-          getUserData();  // Refresh user data to get updated visibelNumbers
+          getUserData(); // Refresh user data to get updated visibelNumbers
         })
         .catch((err) => console.log("Error adding number:", err.message));
     } else {
       toast.error("Your credits are finished. Please recharge.");
     }
   };
-
 
   useEffect(() => {
     getUserData();
@@ -221,7 +212,6 @@ const Watsapp = () => {
           <button onClick={handleNext}>Next</button>
         </div>
       )}
-
       {step === 2 && (
         <div className="industryTypes">
           <h2>Select Industry</h2>
@@ -254,7 +244,6 @@ const Watsapp = () => {
           </div>
         </div>
       )}
-
       {step === 3 && (
         <div className="subCategories">
           <h2>Select a Category in {selectedIndustry}</h2>
@@ -285,7 +274,6 @@ const Watsapp = () => {
           </div>
         </div>
       )}
-
       {step >= 2 && step <= 4 && (
         <div>
           <h2>Filtered Groups</h2>
@@ -320,24 +308,25 @@ const Watsapp = () => {
                       <tr>
                         <th>Group Link</th>
                         <td>
-                          {!authUser.visibelGroups.includes(data._id) && (
+                          {authUser.visibelGroups.length === 0 ? (
+                            <p>You Need To Pay For Credits</p>
+                          ) : !authUser.visibelGroups.includes(data._id) ? (
                             <a
+                            href={data.groupLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={async (e) => {
+                              e.preventDefault(); // Prevents the link from navigating before the handler runs
+                              await visibelHandeler(data._id); // Update visible groups
+                              getUserData(); // Fetch the updated user data to reflect credit changes
+                            }}
+                          >
+                            Join Group
+                          </a>
                           
-                              href={data.groupLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => visibelHandeler(data._id)}
-                            >
-                              Join Group
-                            </a>
+                          ) : (
+                            <p>Joined</p>
                           )}
-                               {authUser.visibelGroups.includes(data._id) && (
-                           
-                             <p>Joined</p>
-                           
-                          )}
-
-
                         </td>
                       </tr>
                     </tbody>
