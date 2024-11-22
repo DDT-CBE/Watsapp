@@ -2,20 +2,20 @@ import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import Nav2 from "../Nav2/Nav2";
 import { toast } from "react-toastify";
-import "./youtube.css"
-import YtIcon from "../Assets/icons8-youtube-100.png"
+import "./youtube.css";
+import YtIcon from "../Assets/icons8-youtube-100.png";
 
 const url = process.env.REACT_APP_API_URL;
 
 const YouTubeConnect = () => {
   const [youtubeData, setYoutubeData] = useState([]);
   const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [state, setState] = useState("");
   const [district, setDistrict] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [step, setStep] = useState(1); // Track the current step
+  const [viewCategory, setViewCategory] = useState(false); // New state to control view mode
 
   const industries = {
     Healthcare: [
@@ -58,8 +58,9 @@ const YouTubeConnect = () => {
   const getYoutubeData = () => {
     setLoading(true);
     let query = `?state=${state}&district=${district}`;
-    if (selectedIndustry) query += `&topic=${selectedIndustry}`;
+    if (selectedIndustry) query += `&industry=${selectedIndustry}`;
     if (selectedCategory) query += `&category=${selectedCategory}`;
+
 
     axios
       .get(`${url}getyoutubedata${query}`)
@@ -81,22 +82,23 @@ const YouTubeConnect = () => {
   };
 
   useEffect(() => {
-    if (step >= 2 && step <= 4) {
+    if (state && district) {
       getYoutubeData();
     }
-    setLoading(false);
-  }, [step]);
+  }, [state, district, selectedIndustry ,selectedCategory]);
 
-  const handleNext = () => {
-    if (step === 1 && (!state || !district)) {
-      toast.error("Please select both state and district.");
-      return;
-    }
-    setStep((prevStep) => prevStep + 1);
+  const handleIndustryClick = (industry) => {
+    setSelectedIndustry(industry);
+    setViewCategory(true); // Navigate to category view after selecting an industry
   };
 
-  const handleBack = () => {
-    setStep((prevStep) => prevStep - 1);
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleBackToIndustry = () => {
+    setViewCategory(false); // Go back to industry selection
+    setSelectedCategory(null); // Reset selected category
   };
 
   if (loading) return <div className="loader"></div>;
@@ -106,7 +108,8 @@ const YouTubeConnect = () => {
       <Nav2 />
       <h1 className="buyer-title">YouTube Connect</h1>
 
-      {step === 1 && (
+      {/* Select State and District */}
+      {!viewCategory && !selectedCategory && (
         <div className="statesAndDistricts" style={{ textAlign: "center" }}>
           <h2>Select Your Location</h2>
           <label>State</label>
@@ -144,19 +147,18 @@ const YouTubeConnect = () => {
               </>
             )}
           </select>
-
-          <button onClick={handleNext}>Next</button>
         </div>
       )}
 
-      {step === 2 && (
+      {/* Select Industry */}
+      {!viewCategory && !selectedCategory &&  (
         <div className="industryTypes">
           <h2>Select Industry</h2>
           <div className="industryContainer">
             {Object.keys(industries).map((industry) => (
               <div
                 key={industry}
-                onClick={() => setSelectedIndustry(industry)}
+                onClick={() => handleIndustryClick(industry)}
                 className={`industry ${
                   selectedIndustry === industry ? "active" : ""
                 }`}
@@ -165,29 +167,25 @@ const YouTubeConnect = () => {
               </div>
             ))}
           </div>
-          <div>
-            <button onClick={handleBack}>Back</button>
-            <button
-              onClick={() =>
-                selectedIndustry
-                  ? handleNext()
-                  : toast.error("Select an industry")
-              }
-            >
-              Next
-            </button>
-          </div>
         </div>
       )}
 
-      {step === 3 && (
+      {/* Back Button to go back to Industry Selection */}
+      {viewCategory && (
+        <button className="back-button" onClick={handleBackToIndustry}>
+          Back to Industry
+        </button>
+      )}
+
+      {/* Select Category */}
+      {viewCategory  && (
         <div className="subCategories">
           <h2>Select a Category in {selectedIndustry}</h2>
           <div className="subCategoryContainer">
             {industries[selectedIndustry].map((category) => (
               <div
                 key={category}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryClick(category)}
                 className={`category ${
                   selectedCategory === category ? "active" : ""
                 }`}
@@ -196,78 +194,65 @@ const YouTubeConnect = () => {
               </div>
             ))}
           </div>
-          <div>
-            <button onClick={handleBack}>Back</button>
-            <button
-              onClick={() =>
-                selectedCategory
-                  ? handleNext()
-                  : toast.error("Select a category")
-              }
-            >
-              Next
-            </button>
-          </div>
         </div>
       )}
 
-      {step >= 2 && step <= 4 && (
-        <div>
-          <h2>Filtered YouTube Channels</h2>
-          {err ? (
-            <div
-              style={{ textAlign: "center", color: "red", marginTop: "20px" }}
-            >
-              <h2>{err}</h2>
-            </div>
-          ) : (
-            <div className="youtube-container">
-              {youtubeData.map((data) => (
-               <div className="youtube-card" key={data._id}>
-               <div className="thumbnail">
-                 <h2>{data.channelname}</h2>
-               </div>
-               <table className="details-tables">
-                 <tbody>
-                
-                   <tr>
-                     <th><img className="yticon" src={YtIcon} alt="" /></th>
-                     <td>{data.subscribers} Subscribers</td>
-                   </tr>
-                   <tr>
-                     <th>Average Reaches</th>
-                     <td>{data.averageReaches}</td>
-                   </tr>
-                   <tr>
-                     <th>Campaign Duration</th>
-                     <td>{data.campaignDuration}</td>
-                   </tr>
-                   <tr>
-                     <th>Campaigns/Month</th>
-                     <td>{data.campaignsPerMonth}</td>
-                   </tr>
-                   <tr>
-                     <th>Pricing</th>
-                     <td>Rs.{data.pricing}</td>
-                   </tr>
-                   {/* <tr>
-                     <th>Video Link</th>
-                     <td>
-                       <a href={data.channellink} target="_blank" rel="noopener noreferrer">
-                         Watch Video
-                       </a>
-                     </td>
-                   </tr> */}
-                 </tbody>
-               </table>
-             </div>
-             
-              ))}
-            </div>
-          )}
-          <button onClick={handleBack}>Back</button>
-        </div>
-      )}
+<div>
+        <h2>Filtered Profiles</h2>
+        {err ? (
+          <div style={{ textAlign: "center", color: "red", marginTop: "20px" }}>
+            <h2>{err}</h2>
+          </div>
+        ) : (
+          <div className="youtube-container">
+            {youtubeData.map((data) => (
+              <div className="youtube-card" key={data._id}>
+                <div className="thumbnail">
+                  <h2>{data.channelname}</h2>
+                </div>
+                <table className="details-tables">
+                  <tbody>
+                    <tr>
+                      <th>
+                        <img className="yticon" src={YtIcon} alt="" />
+                      </th>
+                      <td>{data.subscribers} Followers</td>
+                    </tr>
+                    <tr>
+                      <th>Average Reaches</th>
+                      <td>{data.averageReaches}</td>
+                    </tr>
+                    <tr>
+                      <th>Campaign Duration</th>
+                      <td>{data.campaignDuration}</td>
+                    </tr>
+                    <tr>
+                      <th>Campaigns/Month</th>
+                      <td>{data.campaignsPerMonth}</td>
+                    </tr>
+                    <tr>
+                      <th>Pricing</th>
+                      <td>Rs.{data.pricing}</td>
+                    </tr>
+                    <tr>
+                      <th>Profile Link</th>
+                      <td>
+                        <a
+                          href={data.channellink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          See Profile
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </Fragment>
   );
 };

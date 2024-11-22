@@ -60,11 +60,6 @@ const Watsapp = () => {
   const getUserData = () => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
-      navigate("/login");
-      return;
-    }
-
     axios
       .get(`${url}auth/data`, {
         headers: { Authorization: `${token}` },
@@ -73,9 +68,35 @@ const Watsapp = () => {
       .catch((err) => {
         if (err.response?.status === 401) {
           localStorage.removeItem("token");
-          navigate("/login");
         }
       });
+  };
+
+  const visibelHandeler = (id) => {
+    const token = localStorage.getItem("token");
+
+    // If user is not logged in, redirect to login
+    if (!token) {
+      toast.error("You need to log in to join a group!");
+      navigate("/login");
+      return;
+    }
+
+    // If user is logged in, proceed to check credits
+    if (authUser?.credits > 0) {
+      axios
+        .post(
+          `${url}auth/addnumber`,
+          { userId: authUser._id, groupId: id },
+          {
+            headers: { Authorization: `${token}` },
+          }
+        )
+        .then(() => getUserData())
+        .catch((err) => console.log("Error adding number:", err.message));
+    } else {
+      toast.error("Your credits are finished. Please recharge.");
+    }
   };
 
   const getFilteredData = () => {
@@ -84,6 +105,7 @@ const Watsapp = () => {
     if (selectedIndustry) query += `&industry=${selectedIndustry}`;
     if (selectedCategory) query += `&category=${selectedCategory}`;
 
+    // Fetch data without token for all users
     axios
       .get(`${url}getwatsappgroup${query}`)
       .then((res) => {
@@ -100,29 +122,6 @@ const Watsapp = () => {
         setErr("An error occurred while fetching data.");
         setLoading(false);
       });
-  };
-
-  const visibelHandeler = (id) => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-      return;
-    }
-
-    if (authUser?.credits > 0) {
-      axios
-        .post(
-          `${url}auth/addnumber`,
-          { userId: authUser._id, groupId: id },
-          {
-            headers: { Authorization: `${token}` },
-          }
-        )
-        .then(() => getUserData())
-        .catch((err) => console.log("Error adding number:", err.message));
-    } else {
-      toast.error("Your credits are finished. Please recharge.");
-    }
   };
 
   useEffect(() => {
@@ -240,15 +239,16 @@ const Watsapp = () => {
         {err ? (
           <div className="error-message">{err}</div>
         ) : (
-          <div className="buyer-container">
+          <div className="youtube-container">
             {buyerData.map((data) => (
-              <div className="buyer-card" key={data._id}>
+              <div className="youtube-card" key={data._id}>
+                <div className="thumbnail">
+                  <h2>{data.groupName}</h2>
+                </div>
                 <table className="details-tables">
+                
                   <tbody>
-                    <tr>
-                      <th>Group Name</th>
-                      <td>{data.groupName}</td>
-                    </tr>
+                
                     <tr>
                       <th>Total Members</th>
                       <td>{data.groupMembers}</td>
@@ -264,7 +264,14 @@ const Watsapp = () => {
                     <tr>
                       <th>Group Link</th>
                       <td>
-                        {authUser?.credits === 0 ? (
+                        {!authUser ? (
+                          <button
+                            className="join-button"
+                            onClick={() => navigate("/login")}
+                          >
+                            Log in to Join
+                          </button>
+                        ) : authUser?.credits === 0 ? (
                           <p>You Need To Pay For Credits</p>
                         ) : !authUser.visibelGroups.includes(data._id) ? (
                           <a
