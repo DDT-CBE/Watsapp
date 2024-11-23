@@ -1,30 +1,21 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-   
-  }
+
   
   /* Main Container */
   .signup-container {
-    background: linear-gradient(to right, #ff9500, #ffd000);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Arial', sans-serif;
     flex-wrap: wrap;
   }
   
   /* Heading */
   .signup-heading {
     text-align: center;
-    color: white;
-    font-size: 2.5rem;
-    margin:20px 50px;
+    color: black;
+    font-size: 2.5rem;  
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     cursor: pointer;
   }
   
@@ -34,7 +25,7 @@
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 80%;
     max-width: 400px;
   }
   
@@ -72,7 +63,7 @@
   /* Submit Button */
   .submit-button {
     width: 100%;
-    background: #ff7b00;
+    background: #023047;
     color: white;
     padding: 15px;
     border: none;
@@ -86,7 +77,7 @@
   }
   
   .submit-button:hover {
-    background: #ffc300;
+    background: #076fa3;
   }
   
   /* Responsive Design */

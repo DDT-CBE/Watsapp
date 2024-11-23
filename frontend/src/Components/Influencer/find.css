@@ -4,46 +4,28 @@
 /* Find Container */
 .findcontainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 50px 20px;
-  text-align: center;
-  min-height: 100vh;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
+
 .title {
+  position: absolute;
+  top: 10%;
+  color: white;
+  font-size: 3rem;
   font-size: 2.5rem;
   margin-top: 40px;
   font-weight: bold;
-  color: #ffffff;
+  color:  #003135;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Buttons Section */
-.findbox {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
 
-.findbtn {
-  background-color: #219ebc;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 15px 30px;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.findbtn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -51,8 +33,5 @@
     font-size: 1.5rem;
   }
 
-  .findbtn {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
+  
 }

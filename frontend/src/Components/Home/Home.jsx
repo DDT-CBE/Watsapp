@@ -11,17 +11,18 @@ const Home = () => {
         </h1>
 
         <div className="findbox">
+          
           <Link to={"/watsapp"} style={{ textDecoration: "none" }}>
             {" "}
-            <div className="findbtn">Watsapp Connect</div>
+            <div className="button2">Watsapp Connect</div>
           </Link>
           <Link to={"/influencer"} style={{ textDecoration: "none" }}>
             {" "}
-            <div className="findbtn">Influencer Connect</div>
+            <div className="button2">Influencer Connect</div>
           </Link>
           <Link to={"/sellerpage"} style={{ textDecoration: "none" }}>
             {" "}
-            <div className="findbtn">Business Ads</div>
+            <div className="button2">Business Ads</div>
           </Link>
         </div>
       </div>

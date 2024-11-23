@@ -14,7 +14,7 @@
     text-align: center;
   }
   
-  button {
+  .btn {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #0073e6;
@@ -24,7 +24,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .btn:hover {
     background-color: #005bb5;
   }
   

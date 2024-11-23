@@ -55,6 +55,7 @@ const Login = () => {
   return (
     <Fragment>
       <div className="signup-container">
+        <h1 className="signup-heading"> Login </h1>
         <form className="signup-box" onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Email</label>

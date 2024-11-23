@@ -9,42 +9,47 @@
 }
 
 /* Step Containers */
-.statesAndDistricts, .industryTypes, .subCategories {
-  background: #fff;
+.statesAndDistricts, .industryTypes, .subCategories { 
   margin: 20px auto;
   padding: 20px;
   max-width: 600px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background-color: #023047;
+  color: white;
+  
+
+}
+
+
+.main-container{
+  margin: 15px;
+  border-radius: 10px;
 }
 
 label {
   font-weight: bold;
   margin-top: 10px;
   display: block;
-  color: #555;
+  color: white;
 }
 
-select, button {
-  margin-top: 10px;
-  padding: 10px;
-  width: 90%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
 
-button,.backbutton {
+
+.join-button,.back-button {
   background-color: #0078D4;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
   text-align: center;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
 }
 
 
-button:hover {
+.join-button,.back-button :hover {
   background-color: #005a9c;
 }
 
@@ -57,7 +62,7 @@ button:hover {
   margin: 20px 0;
 }
 
-.industry, .category {
+ .category {
   background-color: #f1f1f1;
   padding: 15px 20px;
   border-radius: 10px;
@@ -65,6 +70,29 @@ button:hover {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.3s;
+  color: black;
+}
+
+.credit-coin{
+  width: 50px;
+  margin-left: 30px;
+}
+
+.industry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+
+.industry img {
+  max-width: 50px;
+  height: auto;
 }
 
 .industry.active, .category.active {
@@ -77,6 +105,7 @@ button:hover {
   transform: scale(1.1);
 }
 
+
 /* Loader */
 .loader {
   border: 5px solid #f3f3f3;
@@ -87,6 +116,29 @@ button:hover {
   animation: spin 1s linear infinite;
   margin: 100px auto;
 }
+
+
+.credits-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Center the content horizontally */
+  font-size: 1.5rem; /* Adjust the font size */
+  color: #333; /* Text color */
+  font-weight: bold;
+  gap: 10px; /* Space between the coin and the credits */
+  padding: 10px;
+  width: 100%; /* Only occupy space based on content */
+  margin: 0 auto; /* Center the container */
+}
+
+.credit-coin {
+  width: 30px; /* Adjust coin size */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image doesn't distort */
+}
+
+
+
 
 @keyframes spin {
   0% {
@@ -148,14 +200,31 @@ button:hover {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .industryContainer, .subCategoryContainer {
-      flex-direction: column;
-      gap: 10px;
-  }
 
   .buyer-card {
       max-width: 90%;
   }
+  .industryContainer {
+    gap: 10px;
+    margin: 10px 0;
+
+  }
+
+  .industry{
+    width: 100px;
+  }
+
+  .industry img {
+    max-width: 40px;
+    height: auto;
+  }
+  
+
+  .credit-coin{
+    width: 35px;
+  }
+
+
 }
 
 

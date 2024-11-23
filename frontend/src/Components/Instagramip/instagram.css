@@ -1,73 +1,104 @@
-/* Container for all profile cards */
-.buyer-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-  }
-  
-  /* Individual profile card styling */
-  .buyer-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .buyer-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Table for profile details */
-  .details-tables {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .details-tables th,
-  .details-tables td {
-    text-align: left;
-    padding: 8px 12px;
-    font-size: 0.95rem;
-  }
-  
-  .details-tables th {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .details-tables td {
-    color: #555;
-  }
-  
-  .details-tables a {
-    color: #0073e6;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .details-tables a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .buyer-card {
-      padding: 15px;
-    }
-  
-    .details-tables th,
-    .details-tables td {
-      font-size: 0.85rem;
-    }
-  }
-  
+/* Container for all cards */
+.youtube-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Individual Card */
+.youtube-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile Section */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+.profile h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.profile p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stats div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.stats p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Profile Link */
+.profile-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.profile-link a {
+  color: #0073e6;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.profile-link a:hover {
+  color: #005bb5;
+}
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  background-color: black;
+  color: white;
+
+}

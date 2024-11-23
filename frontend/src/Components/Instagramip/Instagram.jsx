@@ -4,6 +4,15 @@ import Nav2 from "../Nav2/Nav2";
 import { toast } from "react-toastify";
 import "./instagram.css";
 import YtIcon from "../Assets/icons8-instagram-100.png";
+import healthCare from "../Assets/icons8-health-care-100.png";
+import finance from "../Assets/icons8-receive-euro-100.png";
+import eCommerce from "../Assets/icons8-buy-100.png";
+import education from "../Assets/icons8-education-100.png";
+import Duration from "../Assets/icons8-timesheet-100.png";
+import Price from "../Assets/icons8-price-100.png";
+import Ads from "../Assets/icons8-web-advertising-100.png";
+import views from "../Assets/icons8-eye-100.png";
+import technology from "../Assets/icons8-software-development-100.png";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -180,19 +189,40 @@ const Instagram = () => {
         <div className="industryTypes">
           <h2>Select Industry</h2>
           <div className="industryContainer">
-            {Object.keys(industries).map((industry) => (
-              <div
-                key={industry}
-                onClick={() => handleIndustryClick(industry)}
-                className={`industry ${
-                  selectedIndustry === industry ? "active" : ""
-                }`}
-              >
-                {industry}
-              </div>
-            ))}
+            {Object.keys(industries).map((industry) => {
+              const industryImages = {
+                Healthcare: healthCare,
+                Education: education,
+                "Retail & E-Commerce": eCommerce,
+                Technology: technology,
+                Finance: finance,
+              };
+
+              return (
+                <div
+                  key={industry}
+                  onClick={() =>{
+                    if (!state || !district) {
+                      toast.error("Please select both state and district");
+                    }else{
+                      handleIndustryClick(industry)
+                    }
+                  } }
+                  className={`industry ${
+                    selectedIndustry === industry ? "active" : ""
+                  }`}
+                >
+                  <img
+                    src={industryImages[industry]}
+                    alt={`${industry} icon`}
+                  />
+                </div>
+              );
+            })}
           </div>
-          <button onClick={handleBackToLocation}>Back to Location</button>
+          <button className="join-button" onClick={handleBackToLocation}>
+            Back to Location
+          </button>
         </div>
       )}
 
@@ -212,7 +242,7 @@ const Instagram = () => {
               </div>
             ))}
           </div>
-          <button onClick={handleBackToStateDistrict}>
+          <button className="join-button" onClick={handleBackToStateDistrict}>
             Back to Industries
           </button>
         </div>
@@ -228,47 +258,64 @@ const Instagram = () => {
           <div className="youtube-container">
             {sellerData.map((data) => (
               <div className="youtube-card" key={data._id}>
+                {/* Channel Thumbnail & Name */}
+                <div className="profile">
                 <div className="thumbnail">
                   <h2>{data.channelname}</h2>
                 </div>
-                <table className="details-tables">
-                  <tbody>
-                    <tr>
-                      <th>
-                        <img className="yticon" src={YtIcon} alt="" />
-                      </th>
-                      <td>{data.subscribers} Followers</td>
-                    </tr>
-                    <tr>
-                      <th>Average Reaches</th>
-                      <td>{data.averageReaches}</td>
-                    </tr>
-                    <tr>
-                      <th>Campaign Duration</th>
-                      <td>{data.campaignDuration}</td>
-                    </tr>
-                    <tr>
-                      <th>Campaigns/Month</th>
-                      <td>{data.campaignsPerMonth}</td>
-                    </tr>
-                    <tr>
-                      <th>Pricing</th>
-                      <td>Rs.{data.pricing}</td>
-                    </tr>
-                    <tr>
-                      <th>Profile Link</th>
-                      <td>
-                        <a
-                          href={data.channellink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          See Profile
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <div>
+                    <h3>{data.channelname}</h3>
+                    <p>{data.category}</p>
+                  </div>
+                </div>
+
+                {/* Stats Section */}
+                <div className="stats">
+                  <div>
+                    <img src={YtIcon} alt="Subscribers" className="icon" />
+                    <p>{data.subscribers} Followers</p>
+                  </div>
+                  <div>
+                    <img
+                      src={views}
+                      alt="Average Reaches"
+                      className="icon"
+                    />
+                    <p>{data.averageReaches} Reaches</p>
+                  </div>
+                  <div>
+                    <img
+                      src={Duration}
+                      alt="Campaign Duration"
+                      className="icon"
+                    />
+                    <p>{data.campaignDuration}</p>
+                  </div>
+                  <div>
+                    <img
+                      src={Ads}
+                      alt="Campaigns Per Month"
+                      className="icon"
+                    />
+                    <p>{data.campaignsPerMonth} Campaigns/Month</p>
+                  </div>
+                  <div>
+                    <img src={Price} alt="Pricing" className="icon" />
+                    <p>Rs. {data.pricing}</p>
+                  </div>
+                </div>
+
+                {/* Profile Link
+                <div className="profile-link">
+                  <a
+                    href={data.channellink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={LinkIcon} alt="Profile Link" className="icon" />{" "}
+                    See Profile
+                  </a>
+                </div> */}
               </div>
             ))}
           </div>

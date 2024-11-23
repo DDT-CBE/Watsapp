@@ -24,14 +24,14 @@ const Influencer = () => {
         {location.pathname === '/influencer' && (
           <div className='findbox'>
             <Link to={"/youtubeip"} style={{ textDecoration: "none" }}>
-              <div className='findbtn' data-aos="zoom-in">YouTube</div>
+              <div className='button2' data-aos="zoom-in">YouTube</div>
             </Link>
             <Link to={"/instagramip"} style={{ textDecoration: "none" }}>
-              <div className='findbtn' data-aos="zoom-in">Instagram</div>
+              <div className='button2' data-aos="zoom-in">Instagram</div>
             </Link>
-            <Link to={"/watsappip"} style={{ textDecoration: "none" }}>
-              <div className='findbtn' data-aos="zoom-in">WhatsApp Channels</div>
-            </Link>
+            {/* <Link to={"/watsappip"} style={{ textDecoration: "none" }}>
+              <div className='button2' data-aos="zoom-in">WhatsApp Channels</div>
+            </Link> */}
           </div>
         )}
 
@@ -39,10 +39,10 @@ const Influencer = () => {
         {location.pathname === '/watsapp' && (
           <div className='findbox'>
             <Link to={"/watsappgroup"} style={{ textDecoration: "none" }}>
-              <div className='findbtn' data-aos="flip-left">WhatsApp Group</div>
+              <div className='button2' data-aos="flip-left">WhatsApp Group</div>
             </Link>
             <Link to={"/watsappchannel"} style={{ textDecoration: "none" }}>
-              <div className='findbtn' data-aos="flip-left">WhatsApp Channel</div>
+              <div className='button2' data-aos="flip-left">WhatsApp Channel</div>
             </Link>
           </div>
         )}

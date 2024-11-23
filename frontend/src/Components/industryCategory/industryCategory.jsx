@@ -120,7 +120,7 @@ const IndustryCategories = () => {
               )}
             </select>
 
-            <button type="submit">Next</button>
+            <button className="btn" type="submit">Next</button>
           </form>
         </div>
       )}

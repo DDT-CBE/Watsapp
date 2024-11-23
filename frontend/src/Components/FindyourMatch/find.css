@@ -1,14 +1,4 @@
-.findcontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.564)),url(../Assets/pexels-cytonn-955395.jpg);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
-  
+
   /* Default styles for large screens */
   .heading {
     padding: 20px 0px;
@@ -16,49 +6,16 @@
     color: #03045e;
   }
   
-  .findbox {
-    display: flex;
-    gap: 200px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* .findbtn {
-    background-color: #ff9500;
-    padding: 30px 50px;
-    border-radius: 20px;
-    color: white;
-    font-size: 1.5rem;
-  }
-  
-  .findbtn:hover {
-    background-color: #ff7b00;
-    border: 1px solid white;
-    cursor: pointer;
-  } */
 
-  .title{
-    position: absolute;
-    top: 10%;
-    color: white;
-    font-size: 3rem;
-  }
-  
+
+
   /* Tablets (max-width: 1024px) */
   @media (max-width: 1024px) {
     .heading {
       font-size: 2.5rem;
       padding: 15px 0px;
     }
-  
-    .findbox {
-      gap: 150px;
-    }
-  
-    .findbtn {
-      padding: 25px 40px;
-      font-size: 1.3rem;
-    }
+
 
   }
   
@@ -69,15 +26,7 @@
       padding: 10px 0px;
     }
   
-    .findbox {
-      flex-direction: column;
-      gap: 50px; /* Reduce gap and change layout to column */
-    }
-  
-    .findbtn {
-      padding: 20px 35px;
-      font-size: 1.2rem;
-    }
+
  
   }
   
@@ -94,17 +43,6 @@
       text-align: center; /* Center the heading on small screens */
     }
   
-    .findbox {
-      flex-direction: column; /* Stack the buttons vertically */
-      height: 50vh;
-    }
-  
-    .findbtn {
-      padding: 15px 25px;
-      font-size: 1rem;
-      width: 100%; /* Full width for buttons on small screens */
-      text-align: center;
-    }
 
     .title{
       font-size: 1.5rem;
