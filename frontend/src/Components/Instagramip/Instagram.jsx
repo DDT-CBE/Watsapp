@@ -143,7 +143,8 @@ const Instagram = () => {
       <Nav2 />
       <h1 className="buyer-title">Instagram Connect</h1>
       {!selectedIndustry && (
-        <div className="statesAndDistricts" style={{ textAlign: "center" }}>
+          <div className="main-container">
+  <div className="statesAndDistricts" style={{ textAlign: "center" }}>
           <h2>Select Your Location</h2>
           <label>State</label>
           <select
@@ -183,9 +184,7 @@ const Instagram = () => {
             </select>
           </>
         </div>
-      )}
 
-      {!selectedIndustry && (
         <div className="industryTypes">
           <h2>Select Industry</h2>
           <div className="industryContainer">
@@ -224,7 +223,12 @@ const Instagram = () => {
             Back to Location
           </button>
         </div>
+
+          </div>
+      
       )}
+
+  
 
       {selectedIndustry && (
         <div className="subCategories">

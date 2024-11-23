@@ -1,86 +1,75 @@
-nav{
-    height: 10vh;
+nav {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003135;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 98;
+}
+
+nav h1 {
+  padding: 0 20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  padding: 0px 30px;
+  cursor: pointer;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+.txtcolor {
+  color: white;
+  font-weight: 600;
+}
+
+.hamburger {
+  width: 50px;
+  padding: 0px 20px;
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 70px;
+  }
+  nav h1 {
+    font-size: 1.5rem;
+    padding: 0 50px;
+
+    margin-left: 50px;
+  }
+
+  nav ul {
+    position: absolute;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #003135;
-    color: white;
-    position: fixed;
-    width: 100%;
+    flex-direction: column;
     top: 0;
-    z-index: 98;
+    left: -99%;
+    background-color: #003135;
+    height: 100vh;
+    width: 80%;
+    padding-top: 100px;
+    font-size: 1rem;
+    transition: all 0.5s;
+  }
+
+  nav ul li {
+    padding-bottom: 20px;
+  }
+
+  .reset {
+    left: 0%;
+  }
 }
-
-nav h1{
-    padding: 0 20px;
-}
-
-nav ul{
-    display: flex;
-    gap: 20px;
-    padding: 0px 30px;
-    cursor: pointer;
-    
-}
-
-nav ul li{
-    list-style: none;
-  
-}
-
-.txtcolor{
-    color: white;
-    font-weight: 600;
-}
-
-
-.hamburger{
-    width: 50px;
-    padding:0px 20px;
-    display: none;
-}
-
-
-
-@media screen and (max-width: 800px){
-
-
-
-    .hamburger{
-        display: block;
-        position: absolute;
-        z-index: 100;
-        width: 70px;
-        
-    }
-    nav  h1{
-        font-size: 1.5rem;
-        padding: 0 50px;
-      
-        margin-left: 50px;
-    }
-
-    nav ul{
-       position: absolute;
-       display: flex;
-       flex-direction: column;
-       top: 0;
-       left: -99%;
-       background-color: #003135;
-       height: 100vh;
-       width: 80%;
-       padding-top: 100px;
-       font-size: 1rem;
-       transition: all .5s;
-    }
-
-    nav ul li{
-        padding-bottom: 20px;
-        
-    }
-
-    .reset{
-        left: 0%;
-    }
-}
-    

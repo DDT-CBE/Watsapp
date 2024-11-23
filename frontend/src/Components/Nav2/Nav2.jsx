@@ -74,7 +74,7 @@ const Nav2 = () => {
           alt="menu"
           onClick={menutoggle}
         />
-        <h1>Ads Connects.com</h1>
+       <h1>Business Connect</h1>
 
         {/* Menu for Youtube, Instagram, and Watsapp */}
         {(isyoutubeip || isinstgramip || isWatsapp) && (

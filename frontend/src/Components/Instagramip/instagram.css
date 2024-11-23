@@ -33,8 +33,6 @@
   gap: 15px;
 }
 
-
-
 .profile h3 {
   font-size: 1.2rem;
   color: #333;
@@ -88,6 +86,8 @@
 .profile-link a:hover {
   color: #005bb5;
 }
+
+/* Thumbnail */
 .thumbnail {
   width: 100px;
   height: 100px;
@@ -100,5 +100,69 @@
   font-size: 0.5rem;
   background-color: black;
   color: white;
+}
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .youtube-card {
+    max-width: 400px; /* Adjust card size for tablets */
+  }
+
+  .profile h3 {
+    font-size: 1rem; /* Reduce font size on smaller screens */
+  }
+
+  .profile p,
+  .stats p {
+    font-size: 0.8rem;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .youtube-container {
+    gap: 15px; /* Reduce gap for smaller screens */
+    padding: 15px;
+  }
+
+  .youtube-card {
+    max-width: 100%; /* Take full width on smaller devices */
+  }
+
+ 
+  .profile h3 {
+    font-size: 0.9rem;
+  }
+
+  .profile p {
+    font-size: 0.75rem;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .youtube-card {
+    padding: 15px; /* Reduce padding on very small screens */
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+  }
+
+
+
+  .profile-link a {
+    font-size: 0.8rem; /* Adjust font size */
+  }
 }

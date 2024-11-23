@@ -15,6 +15,7 @@ import Duration from "../Assets/icons8-timesheet-100.png";
 import Price from "../Assets/icons8-price-100.png";
 import Ads from "../Assets/icons8-web-advertising-100.png";
 import views from "../Assets/icons8-eye-100.png";
+import"./youtube.css"
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -117,9 +118,9 @@ const YouTubeConnect = () => {
     <Fragment>
       <Nav2 />
       <h1 className="buyer-title">YouTube Connect</h1>
-
-      {/* Select State and District */}
-      {!viewCategory && !selectedCategory && (
+      <div className="main-container"> 
+ {/* Select State and District */}
+ {!viewCategory && !selectedCategory && (
         <div className="statesAndDistricts" style={{ textAlign: "center" }}>
           <h2>Select Your Location</h2>
           <label>State</label>
@@ -157,12 +158,7 @@ const YouTubeConnect = () => {
               </>
             )}
           </select>
-        </div>
-      )}
-
-      {/* Select Industry */}
-      {!viewCategory && !selectedCategory && (
-        <div className="industryTypes">
+          <div className="industryTypes">
           <h2>Select Industry</h2>
           <div className="industryContainer">
             {Object.keys(industries).map((industry) => {
@@ -190,7 +186,16 @@ const YouTubeConnect = () => {
             })}
           </div>
         </div>
+          
+        </div>
+
+        
       )}
+
+   
+
+      </div>
+     
 
       {/* Back Button to go back to Industry Selection */}
       {viewCategory && (

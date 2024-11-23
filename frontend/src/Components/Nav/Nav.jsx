@@ -35,7 +35,7 @@ const Nav = () => {
           alt=""
           onClick={menutoggle}
         />
-        <h1>Ads Connect.com</h1>
+        <h1>Business Connect</h1>
         <ul className={menu ? "reset" : "navcontent"}>
           <li>
             <ScrollLink
